@@ -1,0 +1,45 @@
+### model
+model_name_or_path: /path/to/workspace/models/Qwen3-1.7B
+trust_remote_code: true
+flash_attn: fa2
+
+### method
+stage: sft
+do_train: true
+finetuning_type: full
+deepspeed: ../examples/deepspeed/ds_z3_config.json  # choices: [ds_z0_config.json, ds_z2_config.json, ds_z3_config.json]
+
+### dataset
+dataset_dir: dataset_info
+dataset: cbpo_sft_python_only_observation
+template: qwen3
+cutoff_len: 8192
+max_samples: 1000000
+overwrite_cache: true
+preprocessing_num_workers: 16
+
+### output
+output_dir: /path/to/workspace/models/Qwen3-1.7B-CBPO-SFT
+logging_steps: 10
+save_steps: 500
+plot_loss: true
+# overwrite_output_dir: true  # 注释掉，否则无法自动恢复 checkpoint
+report_to: wandb
+run_name: Qwen3-1.7B-CBPO-SFT
+
+### train
+per_device_train_batch_size: 2
+gradient_accumulation_steps: 16
+learning_rate: 5.0e-6
+num_train_epochs: 2.0
+lr_scheduler_type: cosine
+warmup_ratio: 0.1
+bf16: true
+ddp_timeout: 180000000
+
+### eval
+# eval_dataset: alpaca_en_demo
+# val_size: 0.1
+# per_device_eval_batch_size: 1
+# eval_strategy: steps
+# eval_steps: 500

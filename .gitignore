@@ -1,0 +1,90 @@
+# ===================== 敏感信息 =====================
+# 绝不提交任何真实密钥
+.env
+.env.*
+!LLaMA-Factory/.env.local
+*.pem
+*.key
+*_rsa
+*.pfx
+credentials.json
+secrets.yaml
+
+# ===================== 本地保留、不上传 =====================
+# 其他方法的完整 git 克隆（含各自的密钥），仅本地参考
+methods/
+
+# 论文、幻灯片与写作素材（不属于代码仓库）
+paper/
+notes/
+evaluation/paper_figure/
+*.pdf
+*.pptx
+*.potx
+*.docx
+*.tex
+*.sty
+
+# 参考论文 PDF（版权 + 体积）
+reference/
+WSDM/
+
+# 生成的图表与中间产物
+output/
+tmp/
+
+# 投稿草稿（大体积 TIFF + 会议模板）
+投稿/
+
+# 旧的上游 CBPO git 历史备份
+.git_CBPO_upstream_backup/
+
+# ===================== 大文件 / 数据集 =====================
+# 训练数据集与模型权重不入库，请另行用 HF Hub / 网盘分发
+LLaMA-Factory/cbpo_sft/dataset/*.jsonl
+LLaMA-Factory/cbpo_sft/dataset/*.dropped_records.txt
+LLaMA-Factory/LLaMA-Factory-backup
+training/rl_datasets/*.jsonl
+training/search_cache/
+*.safetensors
+*.ckpt
+*.pt
+*.bin
+
+# 大体积图片格式
+*.tiff
+*.tif
+
+# ===================== 训练/实验产物 =====================
+wandb/
+runs/
+checkpoints/
+saves/
+logs/
+*.log
+
+# ===================== LaTeX 编译中间文件 =====================
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.xdv
+*.out
+*.toc
+*.synctex.gz
+*.bbl
+*.blg
+
+# ===================== 系统与 Python 缓存 =====================
+.DS_Store
+**/.DS_Store
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+.ipynb_checkpoints/
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
