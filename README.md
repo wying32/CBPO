@@ -1,6 +1,6 @@
-<div align="center">
+# CBPO: Contrastive Branch Policy Optimization
 
----
+面向可验证奖励强化学习的分支预算分配与对比信用分配方法。
 
 ## 简介
 
